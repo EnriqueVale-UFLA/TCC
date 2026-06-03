@@ -20,3 +20,25 @@ venv_mobile_command/
 *.a
 
 .DS_Store
+
+# ROS/PX4 extras
+*.bag
+*.bag.active
+*.mcap
+*.log
+
+# Python/env
+.env
+*.env
+.venv/
+
+# VSCode opcional
+.vscode/
+
+# YOLO / modelos pesados
+*.pt
+*.onnx
+*.engine
+
+# PX4 clonado dentro do projeto
+voice_command/src/px4_ros_com/

@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+"""
+Detector de marcadores ArUco.
+
+Responsável por:
+- Detectar o marcador na imagem
+- Calcular deslocamento horizontal
+- Publicar comandos de alinhamento
+"""
+
+
 import cv2
 import rclpy
 

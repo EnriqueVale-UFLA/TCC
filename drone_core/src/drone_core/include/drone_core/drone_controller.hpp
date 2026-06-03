@@ -1,3 +1,14 @@
+/**
+ * Biblioteca central de controle do drone.
+ *
+ * Responsável por:
+ * - Armar e desarmar
+ * - Decolar e pousar
+ * - Movimentos relativos
+ * - Controle Offboard
+ * - Publicação de setpoints PX4
+ */
+
 #ifndef DRONE_CORE__DRONE_CONTROLLER_HPP_
 #define DRONE_CORE__DRONE_CONTROLLER_HPP_
 

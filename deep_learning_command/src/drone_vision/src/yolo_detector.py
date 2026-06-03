@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 
+"""
+Detector de pessoas usando YOLOv8.
+
+Responsável por:
+- Detectar pessoas na câmera frontal
+- Estimar posição relativa
+- Publicar comandos de seguimento
+"""
+
 import cv2
 import rclpy
 

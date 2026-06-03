@@ -1,3 +1,16 @@
+/**
+ * Roteador central de comandos.
+ *
+ * Recebe comandos provenientes de:
+ * - Voz
+ * - Aplicativo/Web
+ * - Telegram
+ * - Visão Computacional
+ *
+ * Decide qual fonte possui controle do drone
+ * em cada instante.
+ */
+
 #include <vector>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>

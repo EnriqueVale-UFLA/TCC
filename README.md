@@ -313,6 +313,70 @@ Caso ocorram erros envolvendo OpenCV, YOLO ou NumPy, uma solução comum é mant
 pip install "numpy<2"
 ```
 
+## Ambiente de Simulação Personalizado
+
+Além dos modelos fornecidos originalmente pelo PX4 e Gazebo, este projeto utiliza componentes personalizados para permitir os experimentos de visão computacional.
+
+### Modelo de Drone com Duas Câmeras
+
+O modelo `x500_dual_cam` foi criado a partir do modelo padrão `x500` disponibilizado pelo PX4.
+
+Foram adicionados dois sensores de câmera ao drone:
+
+- Câmera frontal (`camera_front`)
+  - Utilizada para detecção de pessoas com YOLO.
+  - Responsável pelas funcionalidades de seguimento de alvo.
+
+- Câmera inferior (`camera_down`)
+  - Utilizada para detecção de marcadores ArUco.
+  - Responsável pelas funcionalidades de alinhamento e posicionamento sobre a base.
+
+A utilização de duas câmeras permite executar tarefas independentes de visão computacional sem a necessidade de alternar sensores durante a execução da missão.
+
+### Mundo Personalizado `tcc_vision`
+
+O mundo `tcc_vision` foi criado para servir como ambiente principal de testes do projeto.
+
+Ele foi baseado nos mundos de exemplo do PX4/Gazebo e posteriormente modificado para incluir:
+
+- Área de voo para navegação do drone.
+- Marcador ArUco utilizado para alinhamento automático.
+- Boneco/personagem utilizado como alvo para detecção por YOLO.
+- Objetos e estruturas que simulam um ambiente mais próximo de um cenário real.
+
+O objetivo do mundo é permitir a validação de múltiplas formas de controle dentro de um único cenário de simulação.
+
+### Arquivos do Gazebo
+
+Os arquivos utilizados pelo ambiente de simulação encontram-se na pasta:
+
+```text
+gazebo_models/
+```
+
+Nessa pasta estão disponíveis:
+
+- Modelo do drone com duas câmeras (`x500_dual_cam`);
+- Mundo personalizado (`tcc_vision`);
+- Recursos auxiliares necessários para a simulação.
+
+### Integração com PX4
+
+Para utilizar o mundo personalizado durante a inicialização do simulador:
+
+```bash
+export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:$HOME/PX4-Autopilot/Tools/simulation/gz/models
+PX4_GZ_WORLD=tcc_vision make px4_sitl gz_x500_dual_cam
+```
+
+Esse comando inicializa:
+
+- PX4 SITL;
+- Gazebo Sim;
+- Mundo `tcc_vision`;
+- Drone `x500_dual_cam`.
+
+
 ## Inicialização principal
 
 O script `start_tcc.sh` inicializa os componentes principais do sistema:

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>drone_core</name>
+  <version>0.0.1</version>
+  <description>Core reutilizavel de controle do drone para interfaces por voz, Telegram, web, Android e visao computacional.</description>
+
+  <maintainer email="riqueav09@gmail.com">Enrique</maintainer>
+  <license>UFLA</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>px4_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
